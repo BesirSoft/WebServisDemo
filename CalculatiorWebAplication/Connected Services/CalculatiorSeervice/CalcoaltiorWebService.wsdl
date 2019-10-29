@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="Toplamaservisi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="valuone" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="valoscond" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="secondersi" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ToplamaservisiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ToplamaservisiResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ToplamaservisiSoapIn">
+    <wsdl:part name="parameters" element="tns:Toplamaservisi" />
+  </wsdl:message>
+  <wsdl:message name="ToplamaservisiSoapOut">
+    <wsdl:part name="parameters" element="tns:ToplamaservisiResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CalcoaltiorWebServiceSoap">
+    <wsdl:operation name="Toplamaservisi">
+      <wsdl:input message="tns:ToplamaservisiSoapIn" />
+      <wsdl:output message="tns:ToplamaservisiSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CalcoaltiorWebServiceSoap" type="tns:CalcoaltiorWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Toplamaservisi">
+      <soap:operation soapAction="http://tempuri.org/Toplamaservisi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CalcoaltiorWebServiceSoap12" type="tns:CalcoaltiorWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Toplamaservisi">
+      <soap12:operation soapAction="http://tempuri.org/Toplamaservisi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalcoaltiorWebService">
+    <wsdl:port name="CalcoaltiorWebServiceSoap" binding="tns:CalcoaltiorWebServiceSoap">
+      <soap:address location="http://localhost:61900/CalcoaltiorWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CalcoaltiorWebServiceSoap12" binding="tns:CalcoaltiorWebServiceSoap12">
+      <soap12:address location="http://localhost:61900/CalcoaltiorWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
